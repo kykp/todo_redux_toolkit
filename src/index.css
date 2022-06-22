@@ -116,6 +116,7 @@
   border-radius: 5px;
   border: 1px solid rgb(222, 240, 246);
   transition: background 1s ease;
+  overflow: hidden;
 }
 .completed {
   position: absolute;
