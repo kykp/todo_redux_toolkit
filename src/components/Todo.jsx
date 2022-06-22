@@ -1,7 +1,7 @@
 import {TodoElement} from "./TodoElement"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../features/todo/todoSlice";
+import { addTodo, clearCompletedTodo } from "../features/todo/todoSlice";
 
 var _ = require('lodash');
 
@@ -11,6 +11,10 @@ export const Todo = () => {
   const dispatch = useDispatch();
 
   const todo = useSelector((state) => state.todo.todos);
+
+  const handleClearCompletedTodo = () => {
+    dispatch(clearCompletedTodo())
+  }
 
   const handleSubmit =(e)=> {
     e.preventDefault();
@@ -50,7 +54,7 @@ export const Todo = () => {
                 <small>active</small>
                 <small>completed</small>
               </div>
-              <small>clear completed</small>
+              <small onClick={handleClearCompletedTodo}>clear completed</small>
         </div>
         <div className="todo__form-footer mobile-version">
                 <small >all</small>
