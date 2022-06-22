@@ -210,6 +210,6 @@
 @media screen and (max-width: 600px) {
   .todo__container{
     width: 95%;
-    font-size: 5px;
+    font-size: 18px;
   }
 }
