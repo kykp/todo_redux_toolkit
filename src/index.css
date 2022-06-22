@@ -107,7 +107,7 @@
 .todo-list-completed-button{
   position: absolute;
   left: 15px;
-  top: 54%;
+  top: 50%;
   transform: translate(-100%, -50%);
   min-width: 15px;
   max-width: 15px;
@@ -121,7 +121,7 @@
 .completed {
   position: absolute;
   left: 15px;
-  top: 54%;
+  top: 50%;
   transform: translate(-100%, -50%);
   min-width: 15px;
   max-width: 15px;
