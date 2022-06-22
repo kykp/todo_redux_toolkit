@@ -20,7 +20,7 @@ export const TodoElement = ({data}) => {
         <div 
         className={data.completed? "todo-list-completed-button completed" : "todo-list-completed-button"}
         onClick={() => toggleCompleted(data.id)}
-        ></div>
+        >{data.completed? "✓" : null}</div>
         <span onClick={() => toggleCompleted(data.id)}>{data.text}</span>
         <button
           onClick={() => handleRemoveTodo(data.id)}
