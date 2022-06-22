@@ -101,13 +101,13 @@
   position: relative;
 }
 .todo-li span{
-  padding-left: 40px;
+  padding-left: 25px;
 }
 
 .todo-list-completed-button{
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: 15px;
+  top: 54%;
   transform: translate(-100%, -50%);
   min-width: 15px;
   max-width: 15px;
@@ -120,8 +120,8 @@
 }
 .completed {
   position: absolute;
-  left: 0;
-  top: 50%;
+  left: 15px;
+  top: 54%;
   transform: translate(-100%, -50%);
   min-width: 15px;
   max-width: 15px;
@@ -201,12 +201,6 @@
     width: 70%;
     font-size: 18px;
   }
-  .todo-list-completed-button{
-    left: 15px;
-  }
-  .completed {
-     left:15px
-    }
 }
 @media screen and (max-width: 600px) {
   .todo__container{
