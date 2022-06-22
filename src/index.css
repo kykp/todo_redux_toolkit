@@ -54,6 +54,10 @@
   
 }
 
+.todo__form-input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
 .todo__elements{
   display: flex;
   width: 50%;
@@ -72,15 +76,14 @@
   width: 90%;
   margin: 0 auto;
   padding-top: 10px;
-  /* padding-left: 40px; */
   padding-bottom: 10px;
   text-align: left;
   border-bottom: 1px solid hsl(233, 14%, 35%);
   transition: all 1s ease;
 }
-.todo-list li:hover .delete-btn {
+/* .todo-list li:hover .delete-btn {
   opacity: 1;
-}
+} */
 
 .delete-btn {
   cursor: pointer;
@@ -91,10 +94,10 @@
   line-height: 16px;
   padding: 3px 4px;
   position: absolute;
-  top: 50%;
+  top: 52%;
   right: 0;
   transform: translate(-100%, -50%);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s ease;
 }
 .todo-li{
@@ -107,13 +110,12 @@
 .todo-list-completed-button{
   position: absolute;
   left: 15px;
-  top: 50%;
+  top: 52%;
   transform: translate(-100%, -50%);
-  min-width: 15px;
-  max-width: 15px;
+  width: 15px;
   min-height: 15px;
   background: transparent;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   border: 1px solid rgb(222, 240, 246);
   transition: background 1s ease;
   overflow: hidden;
@@ -121,7 +123,7 @@
 .completed {
   position: absolute;
   left: 15px;
-  top: 50%;
+  top: 52%;
   transform: translate(-100%, -50%);
   min-width: 15px;
   max-width: 15px;
