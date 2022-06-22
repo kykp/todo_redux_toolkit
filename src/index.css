@@ -110,6 +110,7 @@
   top: 50%;
   transform: translate(-100%, -50%);
   min-width: 15px;
+  max-width: 15px;
   min-height: 15px;
   background: transparent;
   border-radius: 5px;
@@ -122,6 +123,7 @@
   top: 50%;
   transform: translate(-100%, -50%);
   min-width: 15px;
+  max-width: 15px;
   min-height: 15px;
   background: rgb(0, 255, 0);
   border-radius: 5px;
