@@ -24,9 +24,9 @@ export const Filters = () => {
     <small onClick={handleClearCompletedTodo}>clear completed</small>
 </div>
 <div className="todo__form-footer mobile-version">
-      <small >all</small>
-      <small>active</small>
-      <small>completed</small>
+  <small onClick={() => dispatch(filterBy(filters.ALL))} >all</small>
+  <small onClick={() => dispatch(filterBy(filters.COMPLETED))}>active</small>
+  <small onClick={() => dispatch(filterBy(filters.NOT_COMPLETED))}>completed</small>
 </div>
 </>
   )
