@@ -1,7 +1,8 @@
 import {TodoElement} from "./TodoElement"
+import { Filters } from "./Filters";
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, clearCompletedTodo, filterBy } from "../features/todo/todoSlice";
+import { addTodo } from "../features/todo/todoSlice";
 import {filters} from "../features/todo/todoSlice"
 
 var _ = require('lodash');
@@ -25,11 +26,6 @@ export const Todo = () => {
     return todo;
   }
   
-  const handleClearCompletedTodo = () => {
-    dispatch(clearCompletedTodo());
-  }
-
-
   const handleSubmit =(e)=> {
     e.preventDefault();
     const simpleTodo = {
@@ -60,23 +56,8 @@ export const Todo = () => {
         <ul className="todo-list">
         {filteredTodo()?.map(el=> (<TodoElement key={el.id} data={el}/>))}
         </ul>
-
-        <div className="todo__form-footer">
-              <small>{todo.length} items left</small>
-              <div className="todo__form-footer-middle">
-                <small onClick={() => dispatch(filterBy(filters.ALL))} >all</small>
-                <small onClick={() => dispatch(filterBy(filters.COMPLETED))}>active</small>
-                <small onClick={() => dispatch(filterBy(filters.NOT_COMPLETED))}>completed</small>
-              </div>
-              <small onClick={handleClearCompletedTodo}>clear completed</small>
-        </div>
-        <div className="todo__form-footer mobile-version">
-                <small >all</small>
-                <small>active</small>
-                <small>completed</small>
-        </div>
+        <Filters/>
       </div>
-     
     </section>
   )
 }
