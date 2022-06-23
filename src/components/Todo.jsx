@@ -1,7 +1,8 @@
 import {TodoElement} from "./TodoElement"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, clearCompletedTodo } from "../features/todo/todoSlice";
+import { addTodo, clearCompletedTodo, filterBy } from "../features/todo/todoSlice";
+import {filters} from "../features/todo/todoSlice"
 
 var _ = require('lodash');
 
@@ -11,10 +12,23 @@ export const Todo = () => {
   const dispatch = useDispatch();
 
   const todo = useSelector((state) => state.todo.todos);
+  const filter = useSelector((state) => state.todo.filterBy);
 
-  const handleClearCompletedTodo = () => {
-    dispatch(clearCompletedTodo())
+  const filteredTodo = () => {
+    if(filter === filters.COMPLETED) {
+      return todo.filter(todo => !todo.completed);
+    }
+    if(filter === filters.NOT_COMPLETED) {
+      return todo.filter(todo => todo.completed)
+    }
+    // if none of above return all todos
+    return todo;
   }
+  
+  const handleClearCompletedTodo = () => {
+    dispatch(clearCompletedTodo());
+  }
+
 
   const handleSubmit =(e)=> {
     e.preventDefault();
@@ -44,15 +58,15 @@ export const Todo = () => {
       </form>
 
         <ul className="todo-list">
-        {todo?.map(el=> (<TodoElement key={el.id} data={el}/>))}
+        {filteredTodo()?.map(el=> (<TodoElement key={el.id} data={el}/>))}
         </ul>
 
         <div className="todo__form-footer">
               <small>{todo.length} items left</small>
               <div className="todo__form-footer-middle">
-                <small >all</small>
-                <small>active</small>
-                <small>completed</small>
+                <small onClick={() => dispatch(filterBy(filters.ALL))} >all</small>
+                <small onClick={() => dispatch(filterBy(filters.COMPLETED))}>active</small>
+                <small onClick={() => dispatch(filterBy(filters.NOT_COMPLETED))}>completed</small>
               </div>
               <small onClick={handleClearCompletedTodo}>clear completed</small>
         </div>

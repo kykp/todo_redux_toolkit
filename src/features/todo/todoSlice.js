@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  todos: [],
+export const filters = {
+  ALL: "ALL",
+  COMPLETED: "COMPLETED",
+  NOT_COMPLETED: "NOT_COMPLETED",
 };
 
 export const middleWare = (store) => (next) => (action) => {
@@ -12,7 +14,10 @@ export const middleWare = (store) => (next) => (action) => {
 
 export const todoSlice = createSlice({
   name: "todos",
-  initialState,
+  initialState: {
+    todos: [],
+    filterBy: filters.ALL,
+  },
   reducers: {
     addTodo: (state, action) => {
       state.todos.push(action.payload);
@@ -24,12 +29,21 @@ export const todoSlice = createSlice({
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((el) => el.id !== action.payload);
     },
+
     clearCompletedTodo: (state, action) => {
-      console.log(action);
+      state.todos = state.todos.filter((todo) => todo.completed === false);
+    },
+    filterBy(state, action) {
+      state.filterBy = action.payload;
     },
   },
 });
 
-export const { addTodo, toggleCompletedTodo, removeTodo, clearCompletedTodo } =
-  todoSlice.actions;
+export const {
+  addTodo,
+  toggleCompletedTodo,
+  removeTodo,
+  clearCompletedTodo,
+  filterBy,
+} = todoSlice.actions;
 export default todoSlice.reducer;
