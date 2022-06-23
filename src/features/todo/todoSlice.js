@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 export const filters = {
   ALL: "ALL",
@@ -7,7 +6,7 @@ export const filters = {
   NOT_COMPLETED: "NOT_COMPLETED",
 };
 
-const testArray = [];
+const arrayForLocalStorage = [];
 
 const getTodoListfromLocalStorage = () => {
   const localStorageTodo = window.localStorage.getItem("todoList");
@@ -15,12 +14,6 @@ const getTodoListfromLocalStorage = () => {
   window.localStorage.setItem("todoList", JSON.stringify([]));
   return [];
 };
-
-// export const middleWare = (store) => (next) => (action) => {
-//   const state = JSON.stringify(action.payload);
-//   localStorage.setItem("persistantState", state);
-//   return next(action);
-// };
 
 export const todoSlice = createSlice({
   name: "todos",
@@ -31,8 +24,11 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       state.todos.push(action.payload);
-      testArray.push({ ...action.payload });
-      window.localStorage.setItem("todoList", JSON.stringify(testArray));
+      arrayForLocalStorage.push({ ...action.payload });
+      window.localStorage.setItem(
+        "todoList",
+        JSON.stringify(arrayForLocalStorage)
+      );
     },
     toggleCompletedTodo: (state, action) => {
       const togledItem = state.todos.find((el) => el.id === action.payload);
