@@ -6,15 +6,13 @@ export const filters = {
   NOT_COMPLETED: "NOT_COMPLETED",
 };
 
-const arrayForLocalStorage = [];
-
 const getTodoListfromLocalStorage = () => {
   const localStorageTodo = window.localStorage.getItem("todoList");
   if (localStorageTodo) return JSON.parse(localStorageTodo);
   window.localStorage.setItem("todoList", JSON.stringify([]));
   return [];
 };
-
+const arrayForLocalStorage = getTodoListfromLocalStorage();
 export const todoSlice = createSlice({
   name: "todos",
   initialState: {
@@ -24,6 +22,7 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       state.todos.push(action.payload);
+
       arrayForLocalStorage.push({ ...action.payload });
       window.localStorage.setItem(
         "todoList",
